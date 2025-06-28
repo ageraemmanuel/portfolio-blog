@@ -1,0 +1,34 @@
+<%- include("partials/header.ejs")  %>
+
+<div class="form-wrapper">
+  <div class="big-text">
+    <p>
+      Login and read the <span class="primary-text-color">guidelines</span> carefully
+      <span class="primary-text-color">before submitting</span> an article to avoid your article 
+      been rejected. 
+    </p>
+    <p class="my-1">We look forward to hear from You sooner 🚀.</p>
+  </div>
+  <div id="login_div">
+    <h class="center-text heading">Login </h2>
+    <% if (error && error.length > 0) { %>
+      <div class="alert danger"><%= error[0] %></div>
+    <% } %>
+
+    <form action="/login" method="post">
+      <div>
+        <img src="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user-128.png">
+        <input type="email" placeholder="Enter your email" name="username" id="email">
+      </div>
+      <div>
+        <img src="https://cdn4.iconfinder.com/data/icons/top-search-7/128/_lock_password_trust_secure_security_closed_protect-128.png">
+        <input type="password" placeholder="Enter password" name="password">
+      </div>
+      <p style="font-size: 12px;"> <a href="/forgot">Forgot password? </a></p>
+      <input type="submit" class="btn" id="submit" value="Login">
+      <p id="switch-acct">Don't have an account? <a class="primary-text-color-color" href="/register">SignUp</a></p>
+    </form>
+  </div>
+
+</div>
+<%- include("partials/footer.ejs")  %>

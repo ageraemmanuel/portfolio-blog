@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> <%= title  %></title>
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
+		<link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/blog.css">
+    <link rel="stylesheet" media="screen and (max-width: 800px)" href="/styles/mobile.css">
+    <link rel="stylesheet" media="screen and (max-width: 450px)" href="/styles/small_screen.css">
+
+	</head>
+
+  <div id="loader">
+    <div class="spinner"></div>
+  </div>
+
+<body class="dark-mode">
+	
+
+	<!-- Navigation bar -->
+	<nav class="navbar">
+		<div class="wrapper">
+			
+			<div class="logo">
+				<p>SEMBA</p>
+			</div>
+			<button class="button" onclick="toggleDarkMode()"><img src="/img/dark_mode_moon_sun_ui.webp" width="20px" alt="dark mode icon" srcset=""></button>
+
+			<div class="nav-wrapper">
+				<input type="checkbox" id="toggler">
+				<div class="hamburger"><div></div></div>
+				<div class="menu-wrapper">
+					<ul>
+						<li><a href="/blog">Home</a></li>
+						<li><a href="/newpost">write an article</a></li>					
+						<li><a href="/#project">Projects</a></li>					
+						<li><a href="/about">About</a></li>
+						<li><a href="/contact">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+
+	<div id="toast" ></div>

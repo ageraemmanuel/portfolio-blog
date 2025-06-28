@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard | Semba Blog</title>
+  <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+
+  <header class="admin-header">
+    <h1>Semba Blog Admin Panel</h1>
+    <nav>
+      <ul>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/newPost/">Create Post</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="admin-main">
+    <h2>Total Blog Posts: <%= posts.length  %></h2>
+
+    <table class="admin-table my-2">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% posts.forEach(post => { %>
+          <tr>
+            <td><%= post.title %></td>
+            <td><%= new Date(post.article_created_on).toLocaleDateString() %></td>
+            <td>
+              <a class="btn" href="/admin/edit/<%= post.article_id %>">Edit</a> |
+              <form action="/admin/delete/article/<%= post.article_id %>" method="POST" style="display:inline;">
+                <button class="home-btn" type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table> 
+    
+    <h1>Total users: <%=users.length  %></h1>
+    <table class="admin-table my-2">
+      <thead class="my-2">
+        <tr>
+          <th>username</th>
+          <th>Date</th>
+          <th>role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach(user => { %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= new Date(user.user_created_on).toLocaleDateString() %></td>
+            <td><%= user.user_role  %></td>
+            <td>
+              <a class="btn" href="/admin/edit/<%= user.user_id %>">Edit</a> |
+              <form action="/admin/delete/user/<%= user.user_id %>" method="POST" style="display:inline;">
+                <button class="home-btn" type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table> 
+
+    <h1>Total users: <%=projects.length  %></h1>
+    <table class="admin-table my-2">
+      <thead class="my-2">
+        <tr>
+          <th>Project name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% projects.forEach(proj => { %>
+          <tr>
+            <td><%= proj.project_title %></td>
+            <td>
+              <a class="btn" href="/admin/edit/<%= proj.id %>">Edit</a> |
+              <form action="/admin/delete/project/<%= proj.id %>" method="POST" style="display:inline;">
+                <button class="home-btn" type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>  
+
+    <div class="project-action">
+      <h2>Upload project details</h2>
+       <div class="animate" >
+        <p class="my-1">
+          Click on the button below to get reach text editor before you begin
+        </p>
+        <button class="btn my-1" onclick="initEditor()">Start Editing</button>
+      </div>
+      <form action="/admin/uploadproject" enctype="multipart/form-data" method="post">
+        <input type="file" placeholder="uplaod project img" name="project_img" id="project_img">
+        <input type="text" name="link" id="link" placeholder="Enter the href">
+        <input type="text" placeholder="project title" name="project_title" id="project_title">
+        <textarea name="project_description" id="content" placeholder="project description"></textarea>
+        <button type="submit" class="btn"> Add project</button>
+      </form>
+    </div>
+  </main>
+
+<%- include("partials/footer.ejs")  %>

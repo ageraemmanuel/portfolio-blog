@@ -1,0 +1,63 @@
+<%- include("partials/header.ejs") %>
+
+<section>
+  
+  <div id="blogpreview">
+    <div class="intro animate">
+      <h1 class="heading my-2" >Welcome to <span class="primary-text">Semba Tech</span> Blog</h1>
+      <p>
+        At Semba-Tech Blog, we bring you the latest news and 
+        trends from the world of technology. Whether you're 
+        a curious enthusiast or an aspiring programmer, our 
+        blog offers insightful updates and practical tutorials 
+        to fuel your tech journey.
+      </p>
+    </div>
+  </div>
+
+  <div class="section-padding my-2 ">
+    <h1 class="subheading center-text my-2">Latest articles</h1>
+    <% if (typeof errorMessage !== 'undefined') { %>
+    <div style="background-color: #ffe0e0; padding: 1rem; border: 1px solid red; color: darkred; margin-bottom: 1rem;">
+      <%= errorMessage %>
+    </div>
+    <% } %>
+
+    <div class="articles">
+
+      <%if (posts){ %>
+        <% posts.forEach(post => { %> 
+          <div>      
+           <img
+              src="<%=post.article_img_url? post.article_img_url : 'https://media.istockphoto.com/id/805086280/photo/connection.webp?a=1&b=1&s=612x612&w=0&k=20&c=v2affVSDqv5PlpwmB1J42pNnb0LwXmtUn5fLDts4sF4=' %>"
+              alt="Post image"/>
+
+            <h1  class="my-2 animate" ><%=post.title  %></h1>
+            <%- post.article_content.slice(0, 200) %>
+            ... <a style="font-size: small;" href="/readmore/article/<%= post.article_id %>">Continue Reading ==></a>
+          </div>
+        <% }) %>
+     <% }%>
+
+     
+
+
+      
+    </div>
+  </div>
+
+  <div class="subscribe-form animate">
+    <form  class="animate" id="subscribe" action="/subscribe" method="POST">
+      <h3 class="my-1">Get Notify when we drop new article</h3>
+      <p  style="font-size: 1rem;" id="message"></p>
+      <input type="text" placeholder="Enter your email" id="email" name="email">
+      <input class="home-btn" type="submit" value="Notify me">
+      <p class="py-1">
+        By entering your email you agree to our
+        <a class="primary-text" href="/privacypolicy">Privacy Policy</a>
+      </p>
+    </form>
+  </div>
+</section>
+
+<%- include("partials/footer.ejs") %>

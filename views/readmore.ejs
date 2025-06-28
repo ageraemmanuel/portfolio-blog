@@ -1,0 +1,94 @@
+<%- include("partials/header.ejs")  %>
+
+<section>
+  <div id="readmore">
+    <div class="line">
+      <h1 class="center-text py-2 heading"><%=post.title  %></h1>
+
+      <% if (post.article_img_url) { %>
+      <div class="animate article-img">
+        <img src="<%=post.article_img_url  %>" alt="dos image" >
+      </div>           
+      <%} %>
+
+      <div class="senderdetails animate">
+        <% if (post.user_img_url) {%>
+          <img src="<%=post.user_img_url  %>" alt="Sender's profile picture">
+       <% }%>
+        <p>Author: <%= post.name  %> </p>
+        <p>Created on: <%= post.article_created_on.toString().slice(0, 25)  %> </p>
+      </div>
+        
+      <%- post.article_content  %>
+
+      <div class="comment-prev animate">
+
+        <h2 class="subheading animate"><%= post.total_comments  %> Comments</h2>
+        <% if  (post.total_comments == 0) {%>
+          <p>Be the first to comment</p>
+        <%} else{ %>
+
+        <% comments.forEach(comment => { %>
+          <div class="comments animate">
+            <h3>By: <%=comment.commentor_name %></h3>
+            <P><%= comment.comment_content %>  </p>
+            <P style="font-size: .8rem;font-style:italic;">Commented On: <%= comment.comment_created_on.toString().slice(0, 25)  %></P>
+          </div>
+        <% }) %>
+        <% } %>
+      </div>
+
+      <div class="comment-sender">
+        <form action="/comment" id="comment" method="post">
+          <h2 class="subheading my-1">Share your thought.</h2>
+          <p>Your email will not be publish</p>
+          <p id="messageElement"></p>
+          <input type="hidden" id="postId" name="article_id" value="<%= post.art_id %>">
+          <div class="my-1 animate" >
+            <label for="username">Enter Your name*</label>
+            <input type="text" name="username" id="username" placeholder="Enter your name" >
+          </div>
+
+          <div class="my-1 animate" >
+            <label for="email" >Enter Your email*</label>
+            <input type="text" id="email" name="email" placeholder="Enter email" >
+          </div>
+
+          <div class="my-1 animate" >
+            <label for="comment">Enter comment content*</label>
+            <textarea name="comment" id="comment_message"  placeholder="Write your comment here"></textarea>
+          </div>
+          <input class="home-btn" type="submit" value="Comment">
+        </form>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-wrapper">
+      <div class="subscribe-form animate">
+        <div>
+          <h1>Latest articles </h1>
+          <%posts.forEach(post =>{%>
+            <% if (post.article_id === currentPostId) {return}%>
+            <h4 class="my-1"><a href="/readmore/article/<%= post.article_id %>">
+              <%=post.title %>
+            </a></h4>
+         <% }) %>
+         
+        </div>
+        <form  class="animate" id="subscribe" action="/subscribe" method="POST">
+          <h3 class="my-1">Get Notify when we drop new article</h3>
+          <input type="text" placeholder="Enter your email" id="email" name="email">
+          <input class="home-btn" type="submit" value="Notify me">
+          <p class="py-1">
+            By entering your email you agree to our
+            <a class="primary-text" href="/privacypolicy">Privacy Policy</a>
+          </p>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<%- include("partials/footer.ejs")  %>

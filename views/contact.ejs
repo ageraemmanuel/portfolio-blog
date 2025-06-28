@@ -1,0 +1,30 @@
+<%- include("partials/header.ejs")  %>
+
+	<section id="contact">
+		<div class="contact-wrapper  wrapper-padding center-wrapper animate">
+
+			<div class="contact animate">
+        <h2 class="headin" style="font-size: 2rem; max-width: 100%; font-weight: bold;">Get In Touch</h2>
+        <p style="margin-bottom: 1.5rem;">
+          Have a project in mind, a question, or just want to connect? I’d love to hear from you. Fill out the form or email me directly.
+        </p>
+				<div class="animate ">
+					<form id="messageForm" action="/message" method="post">
+						<p id="messageEl" ><%= locals.feedback? feedback: "" %></p>
+						<input type="text" placeholder="Enter your fullname" name="fullName" id="fullName">
+						<input type="email" placeholder="Enter your email" name="email" id="email">
+						<input type="text" placeholder="Enter title of your mesage" id="title" name="title">
+						<textarea name="message" placeholder="Enter your message here" id="message"></textarea>
+						<input type="submit" class="btn" id="submit" value="Send message">
+					</form>
+
+        <div style="margin-top: 2rem;">
+          <p><strong>Email:</strong> <a href="mailto:sembatek@gmail.com">sembatek@gmail.com</a></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/ageraemmanuel" target="_blank">github.com/ageraemmanuel</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/agera-emmanuel" target="_blank">linkedin.com/in/agera-emmanuel</a></p>
+        </div>
+
+      </div>
+		</div>
+	</section>
+<%- include("partials/footer.ejs")  %>

@@ -1,0 +1,32 @@
+<%- include("partials/header.ejs")  %>
+
+<div class="form-wrapper">
+
+  <div id="sign-message">
+    <p>
+      Have an amaizing post to share? <span class="primary-text-color">sign up </span> now to get started 🚀
+    </p>
+  </div>
+
+  <div id="form_div">
+    <h class="center-text heading">SignUp </h2>
+    
+    <form action="/signup" enctype="multipart/form-data"  method="post">
+      <% if (locals.message) { %>
+        <div class="alert danger"><%= locals.message%></div>
+      <% } %>
+      <input type="text" placeholder="Enter your fullname" name="fullName" id="name">
+      <input type="email" placeholder="Enter your email" name="email" id="email">
+      <input type="password" placeholder="Enter password" name="password1">
+      <input type="password" placeholder="Confirm password" name="password2">
+      <label for="profile_pic">OPtional Profile picture:</label>
+      <input type="file" name="profile_pic" accept="image/*" capture="user">
+      <input type="submit" class="btn" id="submit" value="SignUp">
+      <p id="switch-acct">Already have an account? <a class="primary-text" href="/login">Login</a></p>
+    </form>
+  </div>
+
+</div>
+
+
+<%- include("partials/footer.ejs")  %>

@@ -1,0 +1,472 @@
+
+/* READMORE STYLES */
+#readmore{
+  max-width: 100vw;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: 1fr .4fr;
+  padding: 2rem 1rem;
+  gap: 1rem;
+}
+
+#readmore ul li, #readmore ol li{
+  font-size: 1.1rem;
+  margin-bottom: 5px !important;
+  margin-left: 1rem;
+}
+
+#readmore p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+#readmore h2, #readmore h3 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+#readmore img {
+  width: 100%;
+  aspect-ratio: 4 / 2; /* or try 3 / 2, 4 / 3, 16 / 9; etc. */
+  margin-bottom: 2rem;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+
+#readmore .comment-prev {
+  margin-top: 3rem;
+  max-width: 600px;
+}
+
+#readmore .comments {
+  padding: 1rem;
+  border: 1px solid var(--boder-color);
+}
+
+@media screen and (min-width: 450px) {
+  .comment-sender {
+  margin-left: -2rem;
+  margin-right: -.7rem;
+  margin-bottom: -1rem;
+  border-radius: 1rem;
+}
+}
+.comment-sender {
+  background-color: var(--primary-bg-color) ;
+  color: #fff;
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.comment-sender form {
+  max-width: 300px;
+  margin: auto;
+}
+
+.comment-sender .subheading{
+  font-size: 1.7rem;
+  color: #fff;
+}
+
+.comment-sender form div{
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-sender form div input,
+.comment-sender form div textarea{
+  padding: .6rem;
+  outline: none;
+  border-radius: 5px;
+  border: 2px solid var(--boder-color);
+}
+
+.comment-sender form div textarea{
+  height: 6rem;
+}
+
+#readmore .senderdetails{
+  max-width: 250px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-bottom: 2px solid var(--boder-color);
+  border-radius: 10px;
+}
+
+#readmore .senderdetails p {
+  font-size: 12px;
+  font-style: italic;
+}
+
+#readmore .senderdetails img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-self: center;
+}
+
+#readmore .subscribe-form form p{
+  font-size: 12px;
+}
+
+#readmore .subscribe-form form{
+  background-color: var(--primary-bg-color);
+}
+
+  #readmore .subscribe-form {
+  background-color: var(--bg-color);
+}
+
+@media screen and (min-width: 800px ) { 
+  #readmore .sidebar-wrapper {
+    position: relative;
+    float: right;
+    max-width: 300px;
+    margin-top: 5rem;
+    margin-right: 5px;
+  }
+  
+  #readmore .subscribe-form {
+    background-color: var(--bg-color);
+    position: sticky;
+    top: 5rem; 
+    max-height: 800px;
+    max-width: 300px;
+  }
+}
+
+/* Blog preview  */
+#blogpreview{
+  background-color:#004480;
+  padding-bottom: 2rem;
+}
+
+#blogpreview .intro .heading {
+  font-size: 2rem;
+  padding: 1rem;
+  color: #fff;
+}
+
+.intro{
+  padding-top: 5rem !important;
+  max-width: 700px;
+  padding: 1rem;
+  color: #fff;
+}
+
+.articles div{
+  background-color: var(--article-bg-color);
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.articles img{
+  width: 100%;
+  border-radius: 3px;
+}
+
+.articles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+
+.privacy-head {
+  max-width: 100%;
+  margin:  auto;
+  padding: 5rem  2rem;
+  background-color: var(--primary-bg-color) ;
+  color: #fff;
+}
+
+.privacy-head h1{
+  color: #fff;
+}
+
+#privacy-content {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+}
+
+#privacy-content ul li {
+  margin-bottom: 1rem;
+}
+
+.subscribe-form {
+  background-color: var(--primary-bg-color);
+  color: #fff;
+  padding: 2rem 1rem;
+}
+
+.subscribe-form h3 {
+  color: #fff;
+}
+
+.subscribe-form form {
+  max-width: 400px;
+  margin: auto;
+  display: flex ;
+  flex-direction: column;
+  padding: 1rem;
+  gap: .5rem;
+}
+
+.subscribe-form form p {
+  font-size: 10px;
+}
+
+.subscribe-form form input {
+  width: 90%;
+  border: 2px solid var(--boder-color);
+  border-radius: 2px;
+  padding: .5rem;
+  outline: none;
+}
+
+
+/* Register form stylings */
+.form-wrapper {
+  background: url("https://plus.unsplash.com/premium_photo-1661634619445-8907bec4e4d0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dHdvJTIwbGFwdG9wJTIwb24lMjB0YWJsZSUyMGFuZCUyMGElMjBjdXAlMjBvZiUyMGNvZmZlZXxlbnwwfHwwfHx8MA%3D%3D") no-repeat center center/cover;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+  color: #fff;
+  padding: 3rem 1rem;
+}
+
+@media screen and (max-width:730px) {
+  .form-wrapper{
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.form-wrapper::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(0, 0, 0, .4);
+}
+
+.form-wrapper #switch-acct, .form-wrapper label{
+  font-size: 15px;
+}
+
+.form-wrapper #form_div{
+  max-width: 100vw;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border-radius: .8rem;
+  text-align: center;
+  padding: .5rem;
+  transition: all .4s ease-in-out;
+  z-index: 1;
+  border: 2px solid var(--boder-color);
+}
+
+@media screen and (max-width: 500px) {
+  .form-wrapper #form_div{
+    max-width: 100%;
+  }
+}
+
+.form-wrapper #sign-message {
+  max-width: 100vw;
+  position: relative;
+  padding: .5rem;
+  z-index: 1;
+  color: #fff;
+  font-size: 3.5rem;
+}
+
+@media screen and (max-width: 800px) {
+  .form-wrapper #sign-message{
+    font-size: 3rem;
+  }
+}
+
+.form-wrapper div form {
+  padding: 1rem;
+  z-index: 1;
+}
+
+.form-wrapper form textarea{
+  height: 10rem;
+  width: 100%;
+  padding: 1rem;
+  border: var(--boder-color) 2px solid;
+  border-radius: 5px;
+  outline: none;
+}
+
+.form-wrapper form input{
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  min-width: 90%;
+  padding: .9rem 1rem;
+  border: 2px solid var(--boder-color);
+  outline: none;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+/* LOGIN ROUTE */
+.form-wrapper #login_div{
+  max-width: 500px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border-radius: .8rem;
+  text-align: center;
+  padding: .5rem;
+  transition: all .4s ease-in-out;
+  z-index: 1;
+  border: 2px solid var(--boder-color);
+}
+
+.form-wrapper form div{
+  max-width: 100%;
+  display: flex;
+  margin-bottom: 2rem;
+  justify-items: center ;
+}
+
+.form-wrapper .big-text{
+  max-width: 100vw;
+  font-size: 2rem;
+  padding: 10px;
+  z-index: 1;
+}
+
+.form-wrapper .big-text p{
+  font-family: sans-serif, Helvetica, sans-serif;
+}
+
+.form-wrapper form div img{
+  width: 30px;
+  height: 49.5px;
+}
+
+.form-wrapper form div img,
+.form-wrapper form div input {
+  background-color: rgb(0, 0, 0, .4);
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  border-bottom: 3px solid var(--boder-color);
+}
+
+.form-wrapper form .btn{
+  background-color: var(--boder-color);
+}
+
+#guidelines div {
+  margin: 1rem;
+}
+
+#new-post {
+  max-width: 900px;
+  margin: 4rem auto;
+}
+
+#new-post #form_div{
+  max-width: 100vw;
+  color: #fff;
+  border-radius: .8rem;
+  text-align: center;
+  padding: .5rem;
+  transition: all .4s ease-in-out;
+  z-index: 1;
+  border: 2px solid var(--boder-color);
+}
+
+#new-post form textarea{
+  height: 10rem;
+  width: 100%;
+  padding: 1rem;
+  border: var(--boder-color) 2px solid;
+  border-radius: 5px;
+  outline: none;
+  margin-bottom: 1rem;
+}
+
+#new-post form input,
+#new-post form textarea{
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  width: 90%;
+  padding: .9rem 1rem;
+  border: 2px solid var(--boder-color);
+  outline: none;
+  font-size: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+input:focus,
+textarea:focus {
+  outline: red !important;
+  border-color: #00ff26 !important;
+  background-color: #f0f8ff;
+}
+
+@media screen and (min-width: 800px) {
+  #new-post form #input{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+  }
+}
+
+#new-post form #input p{
+  text-align: left;
+  padding-left: 2rem;
+  font-size: .8rem;
+}
+
+#new-post #guide-message p{
+  font-size: 1.2rem;
+}
+
+#update{
+  padding-top: 6rem;
+  min-height: 100vh;
+  background-color: hsla(216, 100%, 50%, 0.2);
+}
+
+#update #updateForm{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#update #updateForm input {
+  width: 90%;
+  padding: 1rem;
+  font-size: 1.25rem;
+}
+
+#update #updateForm textarea{
+  width: 90%;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  min-height: 50rem;
+  font-size: 1.23rem;
+}

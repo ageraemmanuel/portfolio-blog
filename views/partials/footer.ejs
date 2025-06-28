@@ -1,0 +1,43 @@
+
+	<footer>
+
+		<div id="features">
+			<div>
+				<h2>What we do</h2>
+				<li><a href="/#project">view my work</a></li>
+				<li><a href="/blog">Blog</a></li>
+			</div>
+			<div>
+				<h2>Who we are</h2>
+				<li><a href="/about">About</a></li>
+				<li><a href="/privacypolicy">Privacy Policy</a></li>
+			</div>
+			<div>
+				<h2>Have any question?</h2>
+				<li><a href="/contact">Contact Us</a></li>
+				<li><a href="/newpost">have an article to share?</a></li>
+			</div>
+
+		</div>
+
+		<div class="foot-icons">
+			<a href="https://wa.me/2348033331187?text=Hello%20Semba%20Tech%20Team!" target="_blank"><img src="/img/icons/whatsaap-icon.png" alt="whatsaap icon"></a>
+
+			<a href="https://www.facebook.com/share/1Ah4TfduST/" target="_blank"><img src="/img/icons/facebook-icon.png" alt="facebook icon"></a>
+
+			<a href="linkedin.com/in/agera-emmanuel" target="_blank"><img src="/img/icons/linkedin-icon.png" alt=""></a>
+
+			<a href="#" target="_blank"><img src="/img/icons/twitter-icon.png" alt=""></a>
+		</div>
+		<p class="center-text">Semba Tech &copy;  <%= new Date().getFullYear() %> All right reserved</p>
+	</footer>
+
+	<script src="/main.js" defer>
+		
+		const message = '<%= locals.message %>'
+		document.getElementById('heading').innerHTML = message;
+
+	</script>
+	
+</body>
+</html>

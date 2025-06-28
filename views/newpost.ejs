@@ -1,0 +1,128 @@
+<%- include("partials/header.ejs")  %>
+
+  <div id="new-post" class="center-wrapper">
+
+    <div style=" padding: 2rem; margin-bottom: 4rem;" id="guide-message">
+
+    <h1 class="heading">📝Submission Guidelines</h1>
+
+    <p >
+      Welcome! <span style="font-size: 1.5rem;" class="primary-text-color"> <strong> <%= user %>  </strong></span> We’re excited to hear your voice on our platform. 
+      Please read the following guidelines carefully before submitting your blog post.
+    </p>
+
+    <!-- How to Submit -->
+    <div class="animate" style="margin-bottom: 30px;">
+      <h2 class=" py-2 my-2">✍️ How to Submit a Blog Post</h2>
+      <ul >
+        <li class="my-1">Write a clear and engaging title in the main title Area.</li>
+        <li class="my-1">Format your article using the rich-text editor use h2 for subheadings, and paragraghs where necessary.</li>
+        <li class="my-1">Attach an image where necessary (optional, but recommended for quality article).</li>
+        <li class="my-1">Click <strong>“Send post for review”</strong> when you're done.</li>
+      </ul>
+    </div>
+
+    <!-- Guidelines -->
+    <div class="animate">
+      <h2 class="i my-2">📌 Post Content Guidelines</h2>
+      <div class="animate">
+        <div>
+          <h3 class="py-2 my-2">✅ What We Accept</h3>
+          <ul>
+            <li class="my-1">Original blog posts (not copied).</li>
+            <li class="my-1">Educational or insightful content.</li>
+            <li class="my-1">Structured articles with good grammar.</li>
+            <li class="my-1">Minimum of 300 words.</li>
+            <li class="my-1">Use high quality images for appealing look </li>
+          </ul>
+        </div>
+        <div class="animate">
+          <h3 class="i">❌ What We Don’t Accept</h3>
+          <ul >
+            <li class="my-1">Plagiarized or AI-spam content.</li>
+            <li class="my-1">Offensive or inappropriate material.</li>
+            <li class="my-1">Unformatted or very short submissions.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Structure -->
+    <div class="animate my-2">
+      <h2 style="font-size: 22px; font-weight: bold; margin-bottom: 10px;">🧱 Recommended Structure</h2>
+      <ul style="padding-left: 20px;">
+        <li class="my-1"><strong>Introduction:</strong> Start with a clear overview.</li>
+        <li class="my-1"><strong>Subheanings:</strong> Organize your sections.</li>
+        <li class="my-1"><strong>Lists:</strong> Use bullet or number lists for clarity.</li>
+        <li class="my-1"><strong>Images/Videos:</strong>To add relevant and attractive visuals.</li>
+        <li class="my-1"><strong>Conclusion:</strong> Wrap up with a summary or CTA.</li>
+      </ul>
+    </div>
+
+    <!-- Image Tips -->
+    <div class="animate" style="margin-bottom: 30px;">
+      <h2 style="font-size: 22px; font-weight: bold; margin-bottom: 10px;">🖼️ Image Upload Tips</h2>
+      <ul style="padding-left: 20px;">
+        <li class="my-1">Accepted formats: JPG, PNG</li>
+        <li class="my-1">Maximun file size should 2MB</li>
+        <li class="my-1">Optional but recommended to boost engagement</li>
+      </ul>
+    </div>
+
+    <!-- Authorship -->
+    <div  class="animate" style="margin-bottom: 30px;">
+      <h2 style="font-size: 22px; font-weight: bold; margin-bottom: 10px;">👤 Authorship & Review</h2>
+      <ul class="animate" >
+        <li class="my-1">All posts are reviewed before publishing.</li>
+        <li class="my-1">Minor edits may be made for clarity or SEO.</li>
+        <li class="my-1">Your name will appear unless you request anonymity.</li>
+      </ul>
+    </div>
+
+    <!-- After Submission -->
+    <div  class="animate" style="margin-bottom: 30px;">
+        <h2 style="font-size: 22px; font-weight: bold; margin-bottom: 10px;">📨 After Submission</h2>
+        <ul class="animate"  style="padding-left: 20px;">
+          <li class="my-1">You will see a success message after submission.</li>
+          <li class="my-1">Review time: 1–3 business days.</li>
+          <li class="my-1">You’ll receive confirmation via email after approval. </li>
+        </ul>
+      </div>
+    </div>
+    
+
+    <div class="animate" id="form_div">
+      <div class="animate" >
+        <p class="my-1">
+          Click on the button below to get reach text editor before you begin
+        </p>
+        <button class="btn" onclick="initEditor()">Start Editing</button>
+      </div>
+      <form class="animate"  action="/submitPost" enctype="multipart/form-data" method="post">
+        <h2 class="my-2">Edit your article carefully below</h2>
+        <div id="input">
+          <div>
+            <p>Upload main image here:</p>
+            <input type="file" name="post_img" accept="image/*">
+          </div>
+          <div>
+            <p>Your main article title</p>
+            <input type="text" placeholder="Enter main post title" name="title" required>
+          </div>
+        </div>
+        <textarea id="content" name="content"></textarea>
+        <div class="my-2">
+          <button type="submit" class="btn"> Send post for review</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="my-2 center-wrapper animate">
+      <p >
+        💡 Need help? Contact our editorial team:  <a class="py-2" href="mailto: sembatek@gmail.com">Contact support</a>
+      </p>
+  </div>
+
+</div>
+
+<%- include("partials/footer.ejs")  %>

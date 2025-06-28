@@ -1,0 +1,16 @@
+<%-include("partials/header.ejs")  %>
+
+
+<div id="update"> 
+  <form action="/admin/update" method="post" id="updateForm">
+    <input type="hidden" id="id" name="id" value="<%= post.art_id %>"> 
+    <input type="text" id="article_img_url" name="article_img_url" value="<%= post.article_img_url %>">   
+    <input type="text" id="title" name="title" placeholder="Enter article title" required value="<%=post.title%>">
+    <textarea id="content" name="content" placeholder="Write your article here"><%= post.article_content  %></textarea>
+    <button class="btn" type="submit">Update Article</button>
+
+  </form>
+</div>
+
+
+<%- include("partials/footer.ejs")  %>
