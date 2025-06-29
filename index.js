@@ -84,7 +84,7 @@ app.get("/admin", async(req, res) =>{
   }
 });
 
-app.get("/admin/edit/:id", async(req, res) =>{
+app.get("/admin/edit/article/:id", async(req, res) =>{
   console.log(req.params.id);
   try{
     const id = Number(req.params.id);
@@ -114,6 +114,7 @@ app.get("/privacypolicy", (req, res) => {
 
 app.get("/blog", async (req, res ) => {
   try{
+    console.log("Connecting to:", process.env.DATABASE_URL);
     const articleData = await queries.getPost()
     if (articleData){
       res.render("blog.ejs",
@@ -266,6 +267,7 @@ app.post("/signup", upload.single("profile_pic"), async (req, res) =>{
 
   const {fullName, email, password1, password2, } = req.body;
   const image = req.file;
+  const user_role = 'user';
 
   try{
 
@@ -298,9 +300,9 @@ app.post("/signup", upload.single("profile_pic"), async (req, res) =>{
             console.log(`successfully hash: ${hash}`)
             try{
 
-              const user = await queries.signUpUser(fullName, email, hash)
+              const currentUser = await queries.signUpUser(fullName, email, hash, user_role)
 
-              req.login(user.rows[0], (err) => {
+              req.login(currentUser.rows[0], (err) => {
                 if (err){
                   console.log(err.message)
                 }else{
@@ -310,8 +312,8 @@ app.post("/signup", upload.single("profile_pic"), async (req, res) =>{
               });
 
             } catch(err){
-              console.log(`Error submitting form ${err.message}`);
-              res.render("/register.ejs",
+              console.log(`Error submitting form: ${err.message}`);
+              res.render("register.ejs",
                 {
                   title: "Sign Up | Semba Tech Blog",
                   message:"Error occurred please try again later"
@@ -353,7 +355,8 @@ app.post("/admin/update", async(req, res) =>{
 
 app.post("/admin/delete/article/:id", async (req,res) =>{
   try{
-    await queries.deleteArticle(req.params.id);
+    
+    await queries.deleteFromDb(req.params.id, 'articles', 'article_id');
     return res.redirect("/admin");
     
   }catch(err){
@@ -363,10 +366,10 @@ app.post("/admin/delete/article/:id", async (req,res) =>{
 });
 
 
-app.post("/admin/delete/project/:id", async (req,res) =>{
+app.post("/admin/delete/project/:id", async (req, res) =>{
   try{
 
-    await queries.deleteProject(req.params.id);
+    await queries.deleteFromDb(req.params.id, 'projects', 'id');
     return res.redirect("/admin");
     
   }catch(err){

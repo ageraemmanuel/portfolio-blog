@@ -1,18 +1,19 @@
-import pg from "pg";
 import env from "dotenv";
 
 
 env.config();
 
+import { Pool } from "pg";
+
+
 // setting Up postgres database 
-const db = new pg.Client({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_DATABASE,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT
+const db = new Pool ({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false
+    }
 });
-db.connect();
+
 
 // GET ALL ARTICLES
 async function getPost() {
@@ -95,11 +96,13 @@ async function checkEmail(email) {
 
 
 // SIGNUP USER
-async function signUpUser(fullName, email, hash) {
+async function signUpUser(fullName, email, hash, user_role) {
   
-  const user = await db.query("INSERT INTO users (name, email, password) VALUES($1, $2, $3 ) RETURNING email, password",
-    [fullName, email, hash]
+  const user = await db.query("INSERT INTO users (name, email, password, user_role) VALUES($1, $2, $3, $4 ) RETURNING email, password",
+    [fullName, email, hash, user_role]
   );
+
+  return user
 
 }
 
@@ -131,16 +134,6 @@ async function updateArticle(title, content, article_img_url, id) {
   await db.query("UPDATE articles SET title = $1, article_content = $2, article_img_url = $3 WHERE article_id = $4", [title, content, article_img_url, id])
 }
 
-// DELETE ARTICLE
-
-async function deleteArticle(id) {
-  await db.query(`DELETE FROM articles WHERE article_id = $1`, [id])
-}
-
-async function deleteUser(id) {
-  await db.query(`DELETE FROM users WHERE user_id = $1`, [id])
-}
-
 async function uploadProject(project_title, project_description, project_img_url, link) {
   await db.query("INSERT INTO projects (project_title, project_description, project_img_url, links) VALUES ($1, $2, $3, $4)",
     [project_title, project_description, project_img_url, link]
@@ -151,10 +144,17 @@ async function getProject() {
   const result = await db.query("SELECT * FROM projects");
   return result.rows;
 }
-async function deleteProject(id) {
-  const result = await db.query("DELETE FROM projects WHERE id = $1", [id]);
+
+async function deleteFromDb(id, table, key){
+  await db.query(`DELETE FROM ${table} WHERE ${key} = $1`, [id]);
 }
 
-const queries = {getPost, getUsers,getPostById,deleteProject, uploadProject, getProject, subscribe, sendComment, checkEmail, signUpUser, sendMessage, sendArticle, sendArticleWithImg, updateArticle, deleteArticle, deleteUser}
+async function updateProject(project_title, project_description, project_img_url, id) {
+  await db.query("UPDATE projects SET project_title = $1, project_description = $2, project_img_url = $3 WHERE id = $4", [project_title, project_description, project_img_url, id]);
+}
+
+
+
+const queries = {getPost, getUsers, updateArticle, getPostById, updateProject, uploadProject, getProject, subscribe, sendComment, checkEmail, signUpUser, sendMessage, sendArticle, sendArticleWithImg,  deleteFromDb}
 
 export default queries 

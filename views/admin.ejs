@@ -36,7 +36,7 @@
             <td><%= post.title %></td>
             <td><%= new Date(post.article_created_on).toLocaleDateString() %></td>
             <td>
-              <a class="btn" href="/admin/edit/<%= post.article_id %>">Edit</a> |
+              <a class="btn" href="/admin/edit/article/<%= post.article_id %>">Edit</a> |
               <form action="/admin/delete/article/<%= post.article_id %>" method="POST" style="display:inline;">
                 <button class="home-btn" type="submit" onclick="return confirm('Are you sure?')">Delete</button>
               </form>
@@ -63,7 +63,7 @@
             <td><%= new Date(user.user_created_on).toLocaleDateString() %></td>
             <td><%= user.user_role  %></td>
             <td>
-              <a class="btn" href="/admin/edit/<%= user.user_id %>">Edit</a> |
+              <a class="btn" href="/admin/edit/user<%= user.user_id %>">Edit</a> |
               <form action="/admin/delete/user/<%= user.user_id %>" method="POST" style="display:inline;">
                 <button class="home-btn" type="submit" onclick="return confirm('Are you sure?')">Delete</button>
               </form>
@@ -73,7 +73,7 @@
       </tbody>
     </table> 
 
-    <h1>Total users: <%=projects.length  %></h1>
+    <h1>Total projects: <%=projects.length  %></h1>
     <table class="admin-table my-2">
       <thead class="my-2">
         <tr>
